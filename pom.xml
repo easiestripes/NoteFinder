@@ -16,6 +16,11 @@
 
     <name>NoteFinder</name>
 
+    <modules>
+        <module>dw-server</module>
+        <module>angularjs-webapp</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -31,6 +36,65 @@
                 <version>${dropwizard.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- The Dropwizard JDBI module -->
+            <dependency>
+                <groupId>com.yammer.dropwizard</groupId>
+                <artifactId>dropwizard-jdbi</artifactId>
+                <version>${dw.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yammer.dropwizard</groupId>
+                <artifactId>dropwizard-db</artifactId>
+                <version>${dw.version}</version>
+            </dependency>
+
+            <!--
+            Jetty (for the angularjs-webapp). Make sure that the version corresponds with the Jetty
+            version included with Dropwizard. See:
+            http://mvnrepository.com/artifact/com.yammer.dropwizard/dropwizard-core/0.6.2
+            -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+
+            <!-- For the ProxyServlet -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlets</artifactId>
+                <version>${jetty.version}</version>
+            </dependency>
+
+            <!-- JSP Support -->
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>javax.servlet.jsp</artifactId>
+                <version>${glassfish.javax.version}</version>
+            </dependency>
+
+            <!-- JDBC drivers -->
+            <dependency>
+                <groupId>postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- Various util libs -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>13.0.1</version>
+            </dependency>
+
+            <!-- Test dependencies -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.1</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
