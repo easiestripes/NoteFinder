@@ -56,7 +56,6 @@ public class NoteFinderApplication extends Application<NoteFinderConfiguration> 
 
         final NoteHealthCheck healthCheck = new NoteHealthCheck(configuration.getDefaultName());
         environment.healthChecks().register("NoteFinder Service", healthCheck);
-
     }
 
 }

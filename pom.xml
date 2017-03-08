@@ -183,7 +183,6 @@
         </dependency>
 
         <!-- Test dependencies -->
-
     </dependencies>
 
     <build>
