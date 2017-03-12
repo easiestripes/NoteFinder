@@ -228,6 +228,9 @@
                             <addClasspath>true</addClasspath>
                             <mainClass>${mainClass}</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <Class-Path>./src/main/resources/</Class-Path>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>

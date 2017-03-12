@@ -10,10 +10,12 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.jdbi.bundles.DBIExceptionsBundle;
 import io.dropwizard.migrations.MigrationsBundle;
+import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
+import java.net.URL;
 import java.net.UnknownHostException;
 
 public class NoteFinderApplication extends Application<NoteFinderConfiguration> {
@@ -39,7 +41,7 @@ public class NoteFinderApplication extends Application<NoteFinderConfiguration> 
         bootstrap.getObjectMapper().registerModule(new GuavaModule());
 
         // adding the webapp folder (located in our resources) as root of our webapp
-        bootstrap.addBundle(new AssetsBundle("/assets", "/notebook", "index.html"));
+        bootstrap.addBundle(new AssetsBundle("/assets", "/", "index.html"));
     }
 
     @Override
@@ -52,7 +54,8 @@ public class NoteFinderApplication extends Application<NoteFinderConfiguration> 
         NoteDAO note_db = jdbi.onDemand(NoteDAO.class);
         environment.jersey().register(new NoteRESTController(note_db));
 
-        environment.jersey().setUrlPattern("/api/*");
+        //environment.jersey().setUrlPattern("/api/*");
+        //environment.jersey().packages("com.austinpetrie.notefinder.resources");
 
         final NoteHealthCheck healthCheck = new NoteHealthCheck(configuration.getDefaultName());
         environment.healthChecks().register("NoteFinder Service", healthCheck);

@@ -11,10 +11,6 @@ import javax.validation.constraints.*;
 
 public class NoteFinderConfiguration extends Configuration {
 
-    public NoteFinderConfiguration() {
-        setServerFactory(new SimpleServerFactory());
-    }
-
     @NotEmpty
     private String default_name = "NoteFinder Service";
 
@@ -23,7 +19,12 @@ public class NoteFinderConfiguration extends Configuration {
     @JsonProperty
     private DataSourceFactory database = new DataSourceFactory();
 
+    // Constructor
+    public NoteFinderConfiguration() {
+        setServerFactory(new SimpleServerFactory());
+    }
 
+    // Getters & Setters
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory() {
         return database;

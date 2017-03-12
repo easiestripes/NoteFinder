@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 
-defaultName: ${DW_DEFAULT_NAME:-User}
+#defaultName: ${DW_DEFAULT_NAME:-User}
 
 # Server settings
 server:
@@ -9,6 +8,7 @@ server:
   connector:
       type: http
       port: 8080
+  rootPath: '/api/*'
   applicationContextPath: /
 
 # Database settings
